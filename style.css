@@ -79,3 +79,12 @@ body {
 .circle:hover {
   background-color: #c0d9ef;
 }
+.tall {
+  height: 260px; /* 橫跨兩行的高度 */
+}
+
+.tiny {
+  height: 80px;
+  width: 80px;
+  flex: none;
+}
