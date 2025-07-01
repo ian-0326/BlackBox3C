@@ -32,59 +32,78 @@ body {
   margin-bottom: 16px;
 }
 
+/* 響應式廣播中心 */
+.broadcast-bar {
+  background-color: #d6e9ff;
+  color: #055;
+  border-radius: 15px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 5vw;
+  font-weight: 500;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 廣播動畫 */
+.broadcast-bar span.icon {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.broadcast-text {
+  animation: fade 1s ease-in-out;
+  transition: opacity 0.5s;
+  white-space: nowrap;
+}
+
+/* 輪播動畫 */
+@keyframes fade {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 響應式主區塊 */
 .banner {
-  flex: 2;
-  height: 140px;
+  width: 75vw;
+  height: 37.5vw;
 }
 
 .phone {
-  flex: 1;
-  height: 140px;
+  width: 25vw;
+  height: 50vw;
 }
 
 .small {
-  flex: 1;
-  height: 100px;
+  width: 62.5vw;
+  height: 12.5vw;
+}
+
+.tiny {
+  width: 12.5vw;
+  height: 12.5vw;
+  flex: none;
 }
 
 .reserve {
-  height: 200px;
+  width: 100vw;
+  height: 100vw;
 }
 
-.broadcast {
-  background-color: #d6e9ff;
-  color: #055;
-}
-
-.bottom-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 24px;
-}
-
+/* 響應式圓形按鈕 */
 .circle {
   background-color: #d0e3f3;
-  width: 70px;
-  height: 70px;
+  width: 18.75vw;
+  height: 18.75vw;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 3.5vw;
   font-weight: 500;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
-}
-
-.circle:hover {
-  background-color: #c0d9ef;
-}
-.tall {
-  height: 260px; /* 橫跨兩行的高度 */
-}
-
-.tiny {
-  height: 80px;
-  width: 80px;
-  flex: none;
 }
