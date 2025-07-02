@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>主頁</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .broadcast-bar {
+      background-color: #d6e9ff;
+      color: #055;
+      border-radius: 15px;
+      padding: 10px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      height: 42px;
+      font-weight: 500;
+    }
+
+    .broadcast-bar span.icon {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .broadcast-text {
+      animation: fade 1s ease-in-out;
+      transition: opacity 0.5s;
+      white-space: nowrap;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="broadcast-bar">
+      <span class="icon">📢</span>
+      <span class="broadcast-text" id="broadcast-text">現在預約手機維修，享 95 折優惠！</span>
+    </div>
+
+    <div class="row">
+      <div class="block banner">首頁banner</div>
+      <div class="block phone">手機圖</div>
+    </div>
+    <div class="row">
+      <div class="block small">優惠券</div>
+      <div class="block small">品牌</div>
+    </div>
+    <div class="block reserve">預約</div>
+    <div class="bottom-buttons">
+      <div class="circle">維修</div>
+      <div class="circle">配件</div>
+      <div class="circle">客服</div>
+      <div class="circle">會員</div>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "現在預約手機維修，享 95 折優惠！",
+      "熱銷行動電源限時特價中，數量有限！",
+      "原廠電池更換，快速當日完修 🔋",
+      "加入會員立即送 50 元配件折價券 🎁",
+      "暑假限定活動開跑啦！保貼免費送～"
+    ];
+    let index = 0;
+    const el = document.getElementById('broadcast-text');
+
+    setInterval(() => {
+      index = (index + 1) % messages.length;
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.textContent = messages[index];
+        el.style.opacity = 1;
+      }, 300);
+    }, 4000);
+  </script>
+</body>
+</html>
