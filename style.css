@@ -24,9 +24,15 @@ body, html {
 .overlay {
   position: absolute;
   top: 10%;
-  left: 6%;
-  text-align: left;
+  left: 50%;
+  transform: translateX(-50%);
   color: white;
+  text-align: center;
+}
+
+.overlay .heading {
+  text-align: left;
+  margin-bottom: 24px;
 }
 
 .logo {
