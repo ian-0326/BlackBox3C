@@ -22,29 +22,32 @@ body, html {
 
 .overlay {
   position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  top: 4%;
+  left: 4%;
+  right: 4%;
   color: white;
 }
 
 .logo {
-  width: 100px;
+  width: 90px;
   margin-bottom: 20px;
 }
 
 .text-group {
   text-align: left;
   max-width: 320px;
-  margin: 0 auto 32px auto;
+  margin-bottom: 32px;
 }
 
 .text-group h1 {
-  font-size: 20px;
+  font-size: 26px;
   line-height: 1.6;
   font-weight: 600;
   margin-bottom: 10px;
+}
+
+.text-group .nowrap {
+  white-space: nowrap;
 }
 
 .text-group p {
@@ -53,7 +56,12 @@ body, html {
   margin-bottom: 0;
 }
 
-button {
+.center-buttons {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.center-buttons button {
   background-color: white;
   color: #002b50;
   padding: 12px 32px;
@@ -62,21 +70,18 @@ button {
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 24px;
+  margin-bottom: 20px;
 }
 
 .links {
-  margin-top: 20px;
   font-size: 14px;
   color: white;
-  text-align: center;
 }
 
 .links a {
   color: white;
   text-decoration: underline;
 }
-
 .login-card {
   position: absolute;
   top: 55%;
