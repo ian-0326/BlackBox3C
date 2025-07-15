@@ -57,8 +57,11 @@ body, html {
 }
 
 .center-buttons {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-top: 32px;
 }
 
 .center-buttons button {
