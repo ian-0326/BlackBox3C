@@ -58,7 +58,7 @@ body, html {
 
 .center-buttons {
   position: absolute;
-  bottom: -75%;
+  bottom: -150%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
