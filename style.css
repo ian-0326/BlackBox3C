@@ -122,3 +122,26 @@ body, html {
   color: white;
   width: 100%;
 }
+@media screen and (max-width: 480px) {
+  .text-group h1 {
+    font-size: 22px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .text-group {
+    max-width: 90%;
+    margin-bottom: 80px;
+  }
+
+  .center-buttons {
+    bottom: 10%;
+  }
+
+  .login-card {
+    width: 90%;
+    max-width: 300px;
+  }
+}
