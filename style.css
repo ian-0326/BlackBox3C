@@ -36,7 +36,7 @@ body, html {
 .text-group {
   text-align: left;
   max-width: 320px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .text-group h1 {
@@ -140,7 +140,7 @@ body, html {
   }
 
   .center-buttons {
-    bottom: -150%;
+    bottom: -100%;
   }
 
   .login-card {
