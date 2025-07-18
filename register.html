@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>會員註冊</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background-color: #f2f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 24px;
+      text-align: center;
+      color: #002b50;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #002b50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .toast {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 100;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registerForm">
+    <h2>會員註冊</h2>
+    <input type="email" name="email" placeholder="電子信箱" required />
+    <input type="tel" name="phone" placeholder="聯絡電話" required />
+    <input type="text" name="name" placeholder="姓名" required />
+    <input type="date" name="birthday" placeholder="生日" required />
+    <input type="password" name="password" placeholder="設定密碼" required />
+    <button type="submit">送出</button>
+  </form>
+
+  <div class="toast" id="toast">註冊成功</div>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const toast = document.getElementById('toast');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbyIvzLuNBk6TpfVDhOLcgnobxN5DwqQ2FL6w0EZxTAKqgvZ8AgLhHd7Jia5cQJVEdKSRg/exec", {
+        method: "POST",
+        body: data
+      })
+      .then(response => {
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+          form.reset();
+        }, 5000);
+      })
+      .catch(error => {
+        alert("發生錯誤，請稍後再試");
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>
