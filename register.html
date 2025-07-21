@@ -32,12 +32,18 @@
       text-align: center;
       color: #002b50;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 12px;
       margin-bottom: 16px;
       border-radius: 8px;
       border: 1px solid #ccc;
+    }
+    .note {
+      color: red;
+      font-size: 12px;
+      margin-top: -12px;
+      margin-bottom: 12px;
     }
     button {
       background-color: #002b50;
@@ -77,7 +83,17 @@
     <input type="tel" name="phone" placeholder="聯絡電話" required />
     <input type="text" name="name" placeholder="姓名" required />
     <input type="date" name="birthday" placeholder="生日" required />
-    <input type="password" name="password" placeholder="設定密碼" required />
+
+    <select name="location" required>
+      <option value="" disabled selected>選擇入會門市</option>
+      <option value="勤美公益店">勤美公益店</option>
+      <option value="沙鹿站前店">沙鹿站前店</option>
+    </select>
+
+    <input type="password" name="password" id="password" placeholder="設定密碼" required />
+    <div class="note">請輸入包含大小寫英文及數字的密碼</div>
+    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="請再次輸入密碼" required />
+
     <button type="submit">送出</button>
   </form>
 
@@ -90,6 +106,21 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const data = new FormData(form);
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password);
+
+      if (!validPassword) {
+        alert("密碼需包含大小寫英文字母及數字，且至少6位數");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("兩次輸入的密碼不一致");
+        return;
+      }
 
       fetch("https://script.google.com/macros/s/AKfycbyIvzLuNBk6TpfVDhOLcgnobxN5DwqQ2FL6w0EZxTAKqgvZ8AgLhHd7Jia5cQJVEdKSRg/exec", {
         method: "POST",
