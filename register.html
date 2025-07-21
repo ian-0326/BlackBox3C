@@ -103,6 +103,13 @@
     const form = document.getElementById('registerForm');
     const toast = document.getElementById('toast');
 
+    function generateMemberCode() {
+      const prefix = 'BB';
+      const now = Date.now().toString().slice(-6);
+      const rand = Math.floor(100 + Math.random() * 900); // 三位數
+      return `${prefix}${now}${rand}`;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const data = new FormData(form);
@@ -121,6 +128,9 @@
         alert("兩次輸入的密碼不一致");
         return;
       }
+
+      const memberCode = generateMemberCode();
+      data.append("memberCode", memberCode);
 
       fetch("https://script.google.com/macros/s/AKfycbyIvzLuNBk6TpfVDhOLcgnobxN5DwqQ2FL6w0EZxTAKqgvZ8AgLhHd7Jia5cQJVEdKSRg/exec", {
         method: "POST",
