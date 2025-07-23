@@ -132,17 +132,23 @@
       const memberCode = generateMemberCode();
       data.append("memberCode", memberCode);
 
-      fetch("https://script.google.com/macros/s/AKfycbza3ghA6wU41P755h4v8xrutdXQrk9tLTVVjDBzQKj9DPhlHXlbiB5gPISfeQlGuySV/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbznn1SE8y9YaVPKSTPrTZyXc3yhnlPRfHiMXesVz4NNNmbVOHFU5FKkyuhr77TchOEs/exec", {
         method: "POST",
         body: data
       })
-      .then(response => {
-        toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-          form.reset();
-        }, 5000);
-      })
+     .then(response => response.json())
+.then(result => {
+  if (result.success) {
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+      form.reset();
+    }, 5000);
+  } else if (result.message === "duplicate") {
+    alert("此信箱或電話已重複註冊，請重新確認。");
+  }
+})
+
       .catch(error => {
         alert("發生錯誤，請稍後再試");
         console.error(error);
