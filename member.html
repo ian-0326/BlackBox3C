@@ -101,5 +101,15 @@
       allowfullscreen>
     </iframe>
   </div>
+
+  <script>
+    // 從網址參數抓取會員姓名顯示
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberName = urlParams.get("name");
+
+    if (memberName) {
+      document.querySelector(".name").textContent = memberName;
+    }
+  </script>
 </body>
 </html>
