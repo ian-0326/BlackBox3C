@@ -69,6 +69,13 @@
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+
+    iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
@@ -89,8 +96,10 @@
 
   <div class="calendar-section">
     <h3>線上預約</h3>
-    <!-- 未來會接月曆元件 -->
-    <p>（這裡將顯示月曆並點選日期填寫預約表單）</p>
+    <iframe 
+      src="https://blackbox3c.simplybook.asia/v2/#book" 
+      allowfullscreen>
+    </iframe>
   </div>
 </body>
 </html>
