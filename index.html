@@ -69,7 +69,7 @@
     .then(res => {
       if (res.success) {
     localStorage.setItem('memberName', res.name); // 儲存會員名稱到 localStorage
-    window.location.href = "member.html"; // ✅ 成功登入後導向會員頁
+    window.location.href = `member.html?email=${encodeURIComponent(res.email)}&name=${encodeURIComponent(res.name)}`;
   } else {
     alert(res.message || "登入失敗");
   }
