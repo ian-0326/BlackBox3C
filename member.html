@@ -2,141 +2,95 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>會員中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>會員主頁</title>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
       font-family: "Noto Sans TC", sans-serif;
-      margin: 0;
-      background: linear-gradient(to top, #eaf1f8, #ffffff);
+      background-color: #f7f9fb;
+      padding: 20px;
+      color: #002b50;
     }
-    header {
-      background-image: url('https://i.imgur.com/Gf20Lbw.png');
-      background-size: cover;
-      padding: 32px 20px 20px;
-      text-align: center;
-      color: white;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-    }
-    header img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid white;
-    }
-    header h2 {
-      margin: 12px 0 4px;
-      font-size: 20px;
-    }
-    .level-box {
-      background-color: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(4px);
-      border-radius: 12px;
-      padding: 8px 12px;
-      display: inline-block;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    ul.menu {
-      list-style: none;
-      padding: 0;
-      margin: 24px 16px;
-      border-radius: 16px;
-      background-color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-    ul.menu li {
+    .profile {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 16px;
+      margin-bottom: 30px;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ccc; /* 預設灰色大頭貼 */
+      margin-bottom: 12px;
+    }
+    .name {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      margin-bottom: 16px;
+      font-size: 18px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+    }
+
+    .section ul {
+      list-style: none;
+    }
+
+    .section li {
+      padding: 10px 0;
       border-bottom: 1px solid #eee;
       cursor: pointer;
     }
-    ul.menu li:last-child {
+
+    .section li:last-child {
       border-bottom: none;
     }
-    ul.menu li img {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
-    }
-    .calendar-container {
-      padding: 16px;
-    }
-    #calendar {
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      display: flex;
-      justify-content: space-around;
-      border-top: 1px solid #ccc;
-      padding: 10px 0;
-    }
-    footer img {
-      width: 24px;
-      height: 24px;
+
+    .calendar-section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
   </style>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img src="https://i.imgur.com/K9GEoKR.png" alt="user" />
-    <h2 id="userName">會員名稱</h2>
-    <div class="level-box">Elite</div>
-  </header>
-
-  <ul class="menu">
-    <li onclick="goTo('profile.html')"><img src="https://img.icons8.com/ios-filled/50/user.png"/> 個人資料</li>
-    <li onclick="goTo('support.html')"><img src="https://img.icons8.com/ios-filled/50/customer-support.png"/> 客服</li>
-    <li onclick="goTo('coupon.html')"><img src="https://img.icons8.com/ios-filled/50/ticket.png"/> 促銷代碼</li>
-    <li onclick="goTo('report.html')"><img src="https://img.icons8.com/ios-filled/50/combo-chart.png"/> 年度報告</li>
-    <li><img src="https://img.icons8.com/ios-filled/50/calendar.png"/> 線上預約</li>
-  </ul>
-
-  <div class="calendar-container">
-    <div id="calendar"></div>
+  <div class="profile">
+    <div class="avatar"></div>
+    <div class="name">會員姓名</div>
   </div>
 
-  <footer>
-    <img src="https://img.icons8.com/ios-filled/50/home.png"/>
-    <img src="https://img.icons8.com/ios-filled/50/search.png"/>
-    <img src="https://img.icons8.com/ios-filled/50/news.png"/>
-    <img src="https://img.icons8.com/ios-filled/50/user-male-circle.png"/>
-  </footer>
+  <div class="section">
+    <h3>會員功能</h3>
+    <ul>
+      <li onclick="alert('尚未設定連結')">個人資料</li>
+      <li onclick="alert('尚未設定連結')">客服</li>
+      <li onclick="alert('尚未設定連結')">促銷代碼</li>
+      <li onclick="alert('尚未設定連結')">年度報告</li>
+    </ul>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
-  <script>
-    // 模擬會員資料：你可以改為從 localStorage 或 URL 傳值抓使用者名稱
-    document.getElementById('userName').innerText = localStorage.getItem('memberName') || '會員名稱';
-
-    function goTo(url) {
-      window.location.href = url;
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'zh-tw',
-        dateClick: function(info) {
-          // 點選日期跳轉到預約表單（可替換 URL）
-          window.location.href = `booking-form.html?date=${info.dateStr}`;
-        }
-      });
-      calendar.render();
-    });
-  </script>
+  <div class="calendar-section">
+    <h3>線上預約</h3>
+    <!-- 未來會接月曆元件 -->
+    <p>（這裡將顯示月曆並點選日期填寫預約表單）</p>
+  </div>
 </body>
 </html>
