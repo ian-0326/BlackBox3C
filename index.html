@@ -68,15 +68,15 @@
     .then(res => res.json())
     .then(res => {
       if (res.success) {
-        // 成功登入後導向會員主頁，可根據需求傳遞名稱、編號等資訊
-        window.location.href = "member.html";
-      } else {
-        alert(res.message || "登入失敗");
-      }
-    })
-    .catch(() => {
-      alert("系統錯誤，請稍後再試");
-    });
+    localStorage.setItem('memberName', res.name); // 儲存會員名稱到 localStorage
+    window.location.href = "member.html"; // ✅ 成功登入後導向會員頁
+  } else {
+    alert(res.message || "登入失敗");
+  }
+})
+.catch(() => {
+  alert("系統錯誤，請稍後再試");
+});
   });
 </script>
 </body>
