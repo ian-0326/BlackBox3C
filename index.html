@@ -67,12 +67,12 @@
     })
     .then(res => res.json())
     .then(res => {
-      if (res.success) {
-    localStorage.setItem('memberName', res.name); // 儲存會員名稱到 localStorage
-    window.location.href = `member.html?email=${encodeURIComponent(res.email)}&name=${encodeURIComponent(res.name)}`;
-  } else {
-    alert(res.message || "登入失敗");
-  }
+     if (res.success) {
+  localStorage.setItem('memberName', res.name);
+  window.location.href = `member.html?account=${encodeURIComponent(res.email)}`;
+} else {
+  alert(res.message || "登入失敗");
+}
 })
 .catch(() => {
   alert("系統錯誤，請稍後再試");
