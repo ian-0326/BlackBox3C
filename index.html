@@ -58,25 +58,26 @@
       }
 
       const data = new URLSearchParams();
-      data.append("account", account);
-      data.append("password", password);
+data.append("account", account);
+data.append("password", password);
 
-      fetch("https://script.google.com/macros/s/AKfycby1ewxB3xytE067OlDyM-4R1jURgdW6faAOeT4J91w18fjrlmdha8nODmf0dYHxRjdUMg/exec", {
-        method: "POST",
-        body: data
-      })
-      .then(res => res.json())
-      .then(res => {
-        if (res.success) {
-          localStorage.setItem('memberName', res.name); // 儲存會員名稱
-          window.location.href = `member.html?account=${encodeURIComponent(res.email)}`;
-        } else {
-          alert(res.message || "登入失敗");
-        }
-      })
-      .catch(() => {
-        alert("系統錯誤，請稍後再試");
-      });
+fetch("https://script.google.com/macros/s/AKfycbzXwiXfhRqdud0kZ6iztqaGlCYoAqfXd-lGCLVdPboawc6or9qpJSuQ181u5CY6Y70xyw/exec", {
+  method: "POST",
+  body: data
+})
+.then(res => res.json())
+.then(res => {
+  if (res.success) {
+    localStorage.setItem('memberName', res.name);
+    window.location.href = `member.html?account=${encodeURIComponent(res.email)}`;
+  } else {
+    alert(res.message || "登入失敗");
+  }
+})
+.catch(() => {
+  alert("系統錯誤，請稍後再試");
+});
+
     });
   </script>
 </body>
