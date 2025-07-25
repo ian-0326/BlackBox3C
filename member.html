@@ -103,11 +103,12 @@
   </div>
 
   <script>
+  window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const account = urlParams.get('account');
 
     if (account) {
-      fetch(`https://script.google.com/macros/s/AKfycbxbkHpJZULAOQjmxLAF8oamuaejOiHpRcXBKeDFZCezflhkceT5hUgh7ncZWiEwoYAJ/exec?account=${account}`)
+      fetch(`https://script.google.com/macros/s/AKfycbxbkHpJZULAOQjmxLAF8oamuaejOiHpRcXBKeDFZCezflhkceT5hUgh7ncZWiEwoYAJ/exec?account=${encodeURIComponent(account)}`)
         .then(response => response.json())
         .then(data => {
           if (data.found) {
@@ -127,6 +128,7 @@
       alert("缺少登入資訊，請重新登入");
       window.location.href = "index.html";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
