@@ -112,7 +112,6 @@
         .then(data => {
           if (data.found) {
             document.querySelector('.name').textContent = data.name;
-            // 你也可以把其他資料存在 localStorage 供其他頁面使用：
             localStorage.setItem("memberInfo", JSON.stringify(data));
           } else {
             alert("找不到會員資料，請重新登入");
@@ -122,6 +121,7 @@
         .catch(err => {
           console.error("查詢失敗：", err);
           alert("資料載入失敗，請稍後再試");
+          window.location.href = "index.html";
         });
     } else {
       alert("缺少登入資訊，請重新登入");
