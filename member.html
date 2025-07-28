@@ -108,7 +108,7 @@
     const account = urlParams.get('account');
 
     if (account) {
-      fetch(`https://script.google.com/macros/s/AKfycbxbkHpJZULAOQjmxLAF8oamuaejOiHpRcXBKeDFZCezflhkceT5hUgh7ncZWiEwoYAJ/exec?account=${encodeURIComponent(account)}`)
+      fetch(`https://script.google.com/macros/s/AKfycbxXxJvXcpeCjDdJtpe_59R7zIUIqgVuVW7038_xcaCJnhyTB0LPUJEvr59MNPyhPYJu/exec?account=${encodeURIComponent(account)}`)
         .then(response => response.json())
         .then(data => {
           if (data.found) {
