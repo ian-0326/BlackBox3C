@@ -79,10 +79,10 @@
   </style>
 </head>
 <body>
-  <div class="profile">
-    <div class="avatar"></div>
-    <div class="name">會員姓名</div>
-  </div>
+  <div class="name">
+  <span id="memberName">會員姓名</span><br>
+  <span id="memberCode" style="font-size: 12px; color: gray;"></span>
+</div>
 
   <div class="section">
     <h3>會員功能</h3>
@@ -111,14 +111,15 @@
     fetch(`https://script.google.com/macros/s/AKfycbxXxJvXcpeCjDdJtpe_59R7zIUIqgVuVW7038_xcaCJnhyTB0LPUJEvr59MNPyhPYJu/exec?account=${encodeURIComponent(account)}`)
       .then(response => response.json())
       .then(data => {
-        if (data.found) {
-          document.querySelector('.name').textContent = data.name;
-          localStorage.setItem("memberInfo", JSON.stringify(data));
-        } else {
-          alert("找不到會員資料，請重新登入");
-          window.location.href = "index.html";
-        }
-      })
+  if (data.found) {
+    document.getElementById("memberName").textContent = data.name;
+    document.getElementById("memberCode").textContent = `會員編號：${data.code}`;
+    localStorage.setItem("memberInfo", JSON.stringify(data));
+  } else {
+    alert("找不到會員資料，請重新登入");
+    window.location.href = "index.html";
+  }
+})
       .catch(err => {
         console.error("查詢失敗：", err);
         alert("資料載入失敗，請稍後再試");
