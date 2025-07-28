@@ -103,7 +103,7 @@
   </div>
 
   <script>
-  window.onload = function () {
+window.onload = function () {
   const urlParams = new URLSearchParams(window.location.search);
   const account = urlParams.get('account');
 
@@ -111,15 +111,17 @@
     fetch(`https://script.google.com/macros/s/AKfycbxXxJvXcpeCjDdJtpe_59R7zIUIqgVuVW7038_xcaCJnhyTB0LPUJEvr59MNPyhPYJu/exec?account=${encodeURIComponent(account)}`)
       .then(response => response.json())
       .then(data => {
-  if (data.found) {
-    document.getElementById("memberName").textContent = data.name;
-    document.getElementById("memberCode").textContent = `會員編號：${data.code}`;
-    localStorage.setItem("memberInfo", JSON.stringify(data));
-  } else {
-    alert("找不到會員資料，請重新登入");
-    window.location.href = "index.html";
-  }
-})
+        if (data.found) {
+          // ✅ 顯示姓名與會員碼（小字）
+          const nameContainer = document.querySelector('.name');
+          nameContainer.innerHTML = `${data.name}<br><span style="font-size: 14px; color: #999;">會員編號：${data.code}</span>`;
+
+          localStorage.setItem("memberInfo", JSON.stringify(data));
+        } else {
+          alert("找不到會員資料，請重新登入");
+          window.location.href = "index.html";
+        }
+      })
       .catch(err => {
         console.error("查詢失敗：", err);
         alert("資料載入失敗，請稍後再試");
@@ -130,11 +132,6 @@
     window.location.href = "index.html";
   }
 }
-    } else {
-      alert("缺少登入資訊，請重新登入");
-      window.location.href = "index.html";
-    }
-  }
 </script>
 </body>
 </html>
