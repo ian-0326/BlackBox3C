@@ -32,6 +32,7 @@
     .name {
       font-size: 22px;
       font-weight: bold;
+      text-align: center;
     }
 
     .section {
@@ -80,9 +81,9 @@
 </head>
 <body>
   <div class="name">
-  <span id="memberName">會員姓名</span><br>
-  <span id="memberCode" style="font-size: 12px; color: gray;"></span>
-</div>
+    <span id="memberName">會員姓名</span><br>
+    <span id="memberCode" style="font-size: 12px; color: gray;"></span>
+  </div>
 
   <div class="section">
     <h3>會員功能</h3>
@@ -103,38 +104,33 @@
   </div>
 
   <script>
-  window.onload = function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const account = urlParams.get('account');
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const account = urlParams.get('account');
 
-  if (account) {
-    fetch(`https://script.google.com/macros/s/AKfycbxXxJvXcpeCjDdJtpe_59R7zIUIqgVuVW7038_xcaCJnhyTB0LPUJEvr59MNPyhPYJu/exec?account=${encodeURIComponent(account)}`)
-      .then(response => response.json())
-      .then(data => {
-  if (data.found) {
-    document.getElementById("memberName").textContent = data.name;
-    document.getElementById("memberCode").textContent = `會員編號：${data.code}`;
-    localStorage.setItem("memberInfo", JSON.stringify(data));
-  } else {
-    alert("找不到會員資料，請重新登入");
-    window.location.href = "index.html";
-  }
-})
-      .catch(err => {
-        console.error("查詢失敗：", err);
-        alert("資料載入失敗，請稍後再試");
+      if (account) {
+        fetch(`https://script.google.com/macros/s/AKfycbxXxJvXcpeCjDdJtpe_59R7zIUIqgVuVW7038_xcaCJnhyTB0LPUJEvr59MNPyhPYJu/exec?account=${encodeURIComponent(account)}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.found) {
+              document.getElementById("memberName").textContent = data.name;
+              document.getElementById("memberCode").textContent = `會員編號：${data.code}`;
+              localStorage.setItem("memberInfo", JSON.stringify(data));
+            } else {
+              alert("找不到會員資料，請重新登入");
+              window.location.href = "index.html";
+            }
+          })
+          .catch(err => {
+            console.error("查詢失敗：", err);
+            alert("資料載入失敗，請稍後再試");
+            window.location.href = "index.html";
+          });
+      } else {
+        alert("缺少登入資訊，請重新登入");
         window.location.href = "index.html";
-      });
-  } else {
-    alert("缺少登入資訊，請重新登入");
-    window.location.href = "index.html";
-  }
-}
-    } else {
-      alert("缺少登入資訊，請重新登入");
-      window.location.href = "index.html";
+      }
     }
-  }
-</script>
+  </script>
 </body>
 </html>
